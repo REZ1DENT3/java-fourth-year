@@ -20,4 +20,7 @@ package net.babichev.task2;
  */
 
 public class Main {
+
+
+
 }
