@@ -18,7 +18,6 @@ package net.babichev.task5;
  */
 
 interface airplaneInterface {
-
     public float getMaxRange();
     public void setMaxRange(float maxRange);
     public void printMaxRange();

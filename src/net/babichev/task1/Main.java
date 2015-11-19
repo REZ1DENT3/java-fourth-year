@@ -35,6 +35,8 @@ public class Main {
         list.push(1000);
         list.push(3000);
 
+        list.each(0, list.count());
+
         Random randomGenerator = new Random();
         for (int i = 0; i < 2; ++i) {
             list.push( net.babichev.libs.math.getIntRand(i) );
