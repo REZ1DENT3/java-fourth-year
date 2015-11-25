@@ -40,9 +40,6 @@ public class MainPaint extends JApplet {
     }
 
     void triangle(Graphics graphics) {
-        graphics.drawLine(u1, v1, u2, v2);
-        graphics.drawLine(u2, v2, u3, v3);
-        graphics.drawLine(u3, v3, u1, v1);
         graphics.fillPolygon(new int[]{u1, u2, u3}, new int[]{v1, v2, v3}, 3);
     }
 
@@ -57,23 +54,69 @@ public class MainPaint extends JApplet {
         graphics.drawRect(x1, y1, x2 - x1, y2 - y1);
 
         int rx = this.getR(x1, x2);
-        int rxn = rx / (n + 1);
+        int rxn = rx / (n);
 
         int ry = this.getR(y1, y2);
-        int rym = ry / (m + 1);
+        int rym = ry / (m);
 
-        for (int i = 1; i <= n; ++i) {
+        for (int i = 1; i < n; ++i) {
             graphics.drawLine(x1 + rxn * i, y1, x1 + rxn * i, y2);
         }
 
-        for (int i = 1; i <= n; ++i) {
+        for (int i = 1; i < m; ++i) {
             graphics.drawLine(x1, y1 + rym * i, x2, y1 + rym * i);
         }
 
+        graphics.setColor(Color.blue);
         this.triangle(graphics);
 
-        
+        int maxTU = Math.min(Math.max(u1, Math.max(u2, u3)), x2);
+        int minTU = Math.max(Math.min(u1, Math.min(u2, u3)), x1);
+//        System.out.println("MaxTU: " + maxTU + " MinTU: " + minTU);
 
+        int maxTV = Math.min(Math.max(v1, Math.max(v2, v3)), y2);
+        int minTV = Math.max(Math.min(v1, Math.min(v2, v3)), y1);
+//        System.out.println("MaxTV: " + maxTV + " MinTV: " + minTV);
+
+//        For debug
+//        graphics.setColor(Color.red);
+//        graphics.drawRect(minTU, minTV, maxTU - minTU, maxTV - minTV);
+
+        int[][] matrix = new int[m + 1][n + 1];
+        int sum = 0;
+        for (int i = minTU; i <= maxTU; ++i) {
+            for (int j = minTV; j <= maxTV; ++j) {
+                if (matrix[s(j, y1, rym) - 1][s(i, x1, rxn) - 1] != 0) continue;
+                matrix[s(j, y1, rym) - 1][s(i, x1, rxn) - 1] = test(i, j) ? 1 : 0;
+            }
+        }
+
+        graphics.setColor(Color.GREEN);
+        for (int i = 0; i < m; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (matrix[i][j] == 1) {
+                    sum += 1;
+                    graphics.drawRect(x1 + rxn * j, y1 + rym * i, rxn, rym);
+                }
+            }
+        }
+
+        System.out.println("quantity of rectangles: " + sum);
+
+    }
+
+    protected int s(int l, int ll, int size) {
+        int d = l - ll;
+        int d2 = d / size;
+        int d1 = d % size;
+        return d1 == 0 ? d2 : d2 + 1;
+    }
+
+    private boolean test(int x, int y) {
+        double k = (u1 - x) * (v2 - v1) - (u2 - u1) * (v1 - y);
+        double m = (u2 - x) * (v3 - v2) - (u3 - u2) * (v2 - y);
+        double n = (u3 - x) * (v1 - v3) - (u1 - u3) * (v3 - y);
+        return (k >= 0 && m >= 0 && n >= 0) || (k <= 0 && m <= 0 && n <= 0);
     }
 
 }
