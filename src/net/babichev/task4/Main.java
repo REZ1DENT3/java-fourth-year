@@ -15,10 +15,17 @@ package net.babichev.task4;
  * Определить функцию переназначения количества мест.
  */
 
-class airplane extends Object {
-    protected float maxRange = 5500;
-    protected String stamp = "Airbus A320";
+class Airplane extends Object {
+
+    protected float maxRange;
+    protected String stamp;
     protected int fuel;
+
+    public Airplane(float maxRange, String stamp, int fuel) {
+        this.maxRange = maxRange;
+        this.stamp = stamp;
+        this.fuel = fuel;
+    }
 
     public final float getMaxRange() { return this.maxRange; }
     public final void setMaxRange(float maxRange) { this.maxRange = maxRange; }
@@ -35,22 +42,34 @@ class airplane extends Object {
     public void allDataPrint() { this.printFuel(); this.printMaxRange(); this.printStamp(); }
 }
 
-class passengerPlane extends airplane {
-    protected int places = 330;
+class PassengerPlane extends Airplane {
+
+    protected int places;
+    public PassengerPlane(float maxRange, String stamp, int fuel, int places) {
+        super(maxRange, stamp, fuel);
+        this.places = places;
+    }
+
     public final int getPlaces() { return this.places; }
     public final void setPlaces(int places) { this.places = places; }
     public final void printPlaces() { System.out.println(this.toString() + ": " + this.places); }
+
     @Override
     public final void allDataPrint() {
         super.allDataPrint();
         this.printPlaces();
     }
+
 }
 
 public class Main {
-
     public static void main(String[] args) {
-        passengerPlane airbus = new passengerPlane();
+        Airplane a = new Airplane(6500, "Airbus A330", 400);
+        a.allDataPrint();
+
+        System.out.println();
+
+        PassengerPlane airbus = new PassengerPlane(5500, "Airbus A320", 360, 330);
         airbus.allDataPrint();
     }
 }

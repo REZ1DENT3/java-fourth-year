@@ -1,5 +1,8 @@
 package net.babichev.task6;
 
+import javax.swing.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Scanner;
 
 /**
@@ -13,14 +16,32 @@ import java.util.Scanner;
  *      Выделить искомые прямоугольники.
  */
 
-class coord { public int x, y; }
 
 public class Main {
-    public static void main(String[] args) {
-        coord D1, D2;
-        coord T1, T2, T3;
-        int n, m;
 
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        
+        JFrame frame = new JFrame("Graph");
+        JApplet app = new MainPaint();
+
+        frame.getContentPane().add("Center", app);
+
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                System.exit(0);
+            }
+        });
+
+        app.init();
+
+        frame.pack();
+        frame.setSize(300, 300);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
     }
+
 }

@@ -1,6 +1,6 @@
 package net.babichev.task2;
 
-import net.babichev.libs.math;
+import net.babichev.libs.MyMath;
 
 import java.util.ArrayList;
 
@@ -130,12 +130,12 @@ public class Main {
 
         for (int i = 0; i < 100; ++i) {
             bases.add(i, new NewBase(
-                    math.randDouble(5000, 10000),
-                    math.randDouble(45000, 110000),
-                    math.randDouble(40, 110),
+                    MyMath.randDouble(5000, 10000),
+                    MyMath.randDouble(45000, 110000),
+                    MyMath.randDouble(40, 110),
                     "bk" + i,
-                    "type" + math.getIntRand(i),
-                    math.randInt(100000, 1000000)
+                    "type" + MyMath.getIntRand(i),
+                    MyMath.randInt(100000, 1000000)
             ));
         }
         quickSort(0, 99);

@@ -2,7 +2,7 @@ package net.babichev.libs;
 
 import java.util.Random;
 
-public class math {
+public class MyMath {
     private static Random randomGenerator = new Random();
 
     public static final int getIntRand(int ind) {

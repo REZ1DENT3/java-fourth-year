@@ -17,7 +17,7 @@ package net.babichev.task5;
  * Интерфейсы
  */
 
-interface airplaneInterface {
+interface AirplaneInterface {
     public float getMaxRange();
     public void setMaxRange(float maxRange);
     public void printMaxRange();
@@ -32,10 +32,17 @@ interface airplaneInterface {
 
     public void allDataPrint();
 }
-class airplane extends Object implements airplaneInterface {
-    protected float maxRange = 5500;
-    protected String stamp = "Airbus A320";
+class Airplane extends Object implements AirplaneInterface {
+
+    protected float maxRange;
+    protected String stamp;
     protected int fuel;
+
+    public Airplane(float maxRange, String stamp, int fuel) {
+        this.maxRange = maxRange;
+        this.stamp = stamp;
+        this.fuel = fuel;
+    }
 
     public final float getMaxRange() { return this.maxRange; }
     public final void setMaxRange(float maxRange) { this.maxRange = maxRange; }
@@ -52,14 +59,20 @@ class airplane extends Object implements airplaneInterface {
     public void allDataPrint() { this.printFuel(); this.printMaxRange(); this.printStamp(); }
 }
 
-interface passengerPlaneInterface {
+interface PassengerPlaneInterface {
     public int getPlaces();
     public void setPlaces(int places);
     public void printPlaces();
 }
 
-class passengerPlane extends airplane implements passengerPlaneInterface {
-    protected int places = 330;
+class PassengerPlane extends Airplane implements PassengerPlaneInterface {
+    protected int places;
+
+    public PassengerPlane(float maxRange, String stamp, int fuel, int places) {
+        super(maxRange, stamp, fuel);
+        this.places = places;
+    }
+
     public final int getPlaces() { return this.places; }
     public final void setPlaces(int places) { this.places = places; }
     public final void printPlaces() { System.out.println(this.toString() + ": " + this.places); }
@@ -71,9 +84,13 @@ class passengerPlane extends airplane implements passengerPlaneInterface {
 }
 
 public class Main {
-
     public static void main(String[] args) {
-        passengerPlane airbus = new passengerPlane();
+        Airplane a = new Airplane(6500, "Airbus A330", 400);
+        a.allDataPrint();
+
+        System.out.println();
+
+        PassengerPlane airbus = new PassengerPlane(5500, "Airbus A320", 360, 330);
         airbus.allDataPrint();
     }
 }

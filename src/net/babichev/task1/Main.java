@@ -21,7 +21,8 @@ package net.babichev.task1;
  * each(ind, end) +
  */
 
-import net.babichev.libs.myList;
+import net.babichev.libs.MyMath;
+import net.babichev.libs.MyClassList;
 
 import java.util.Random;
 
@@ -29,7 +30,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        myList list = new myList();
+        MyClassList list = new MyClassList();
 
         list.push(2000);
         list.push(1000);
@@ -39,7 +40,7 @@ public class Main {
 
         Random randomGenerator = new Random();
         for (int i = 0; i < 2; ++i) {
-            list.push( net.babichev.libs.math.getIntRand(i) );
+            list.push( MyMath.getIntRand(i) );
         }
 
         list.each(0, list.count());

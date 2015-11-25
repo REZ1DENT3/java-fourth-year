@@ -2,15 +2,14 @@ package net.babichev.libs;
 
 import java.util.ArrayList;
 
-public class myList {
+public class MyClassList {
 
     private ArrayList<Integer> _list = new ArrayList<Integer>();
     private int _count = 0;
 
     private static final int first = 0;
 
-    public myList() {
-    }
+    public MyClassList() {}
 
     public int count() {
         return this._count;
