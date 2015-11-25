@@ -22,9 +22,23 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        
+
         JFrame frame = new JFrame("Graph");
-        JApplet app = new MainPaint();
+        JApplet app = new MainPaint(new int[]{
+                60, 60, // x1, y1
+                230, 190, // x2, y2
+
+                5, 5, // n, m
+
+                70, 80, // u1, v1
+                65, 120, // u2, v2
+                95, 150, // u3, v3
+        });
+
+//        private int x1, x2, y1, y2;
+//        private int n, m;
+//
+//        private int u1, v1, u2, v2, u3, v3;
 
         frame.getContentPane().add("Center", app);
 
