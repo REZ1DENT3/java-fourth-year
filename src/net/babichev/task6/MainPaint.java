@@ -10,6 +10,7 @@ public class MainPaint extends JApplet {
      */
     private int x1, x2, y1, y2;
     private int n, m;
+    private int width, height;
 
     /**
      * triangle
@@ -29,6 +30,8 @@ public class MainPaint extends JApplet {
         this.v2 = data[9];
         this.u3 = data[10];
         this.v3 = data[11];
+        this.width = data[12];
+        this.height = data[13];
     }
 
     private int getR(int d1, int d2) {
@@ -45,12 +48,14 @@ public class MainPaint extends JApplet {
 
     public void paint(Graphics2D graphics) {
 
-        graphics.setColor(Color.black);
-
 //        graphics.drawLine(10, 20, 50, 160);
 //        graphics.drawRect(60, 60, 160, 160);
 //        graphics.fillRect(60, 60, 160, 160);
 
+        graphics.setColor(Color.WHITE);
+        graphics.fillRect(0, 0, width, height);
+
+        graphics.setColor(Color.black);
         graphics.drawRect(x1, y1, x2 - x1, y2 - y1);
 
         int rx = this.getR(x1, x2);
@@ -91,7 +96,7 @@ public class MainPaint extends JApplet {
             }
         }
 
-        graphics.setColor(Color.GREEN);
+        graphics.setColor(Color.ORANGE);
         for (int i = 0; i < m; ++i) {
             for (int j = 0; j < n; ++j) {
                 if (matrix[i][j] == 1) {
@@ -101,7 +106,8 @@ public class MainPaint extends JApplet {
             }
         }
 
-        System.out.println("quantity of rectangles: " + sum);
+        graphics.setColor(Color.BLACK);
+        graphics.drawString("quantity of rectangles: " + sum, 100, 40);
 
     }
 
