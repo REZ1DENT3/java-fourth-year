@@ -30,7 +30,7 @@ public class MyClassList {
     }
 
     public void insert(int ind, Integer data) {
-        this._list.add(ind, (Integer) data); // 9999
+        this._list.add(ind, data); // 9999
         this._count++;
     }
 
@@ -51,7 +51,6 @@ public class MyClassList {
             this._list.set(i - 1, this.at(i));
         }
         lastRemove();
-        ;
     }
 
     public void remove(int ind) {
@@ -83,10 +82,8 @@ public class MyClassList {
             }
             if (i <= j) {
                 tmp = this.at(i);
-                this._list.set(i, this.at(j));
-                this._list.set(j, tmp);
-                i++;
-                j--;
+                this._list.set(i++, this.at(j));
+                this._list.set(j--, tmp);
             }
         }
         ;
