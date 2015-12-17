@@ -38,7 +38,6 @@ public class Main {
 
         list.each(0, list.count());
 
-        Random randomGenerator = new Random();
         for (int i = 0; i < 2; ++i) {
             list.push( MyMath.getIntRand(i) );
         }

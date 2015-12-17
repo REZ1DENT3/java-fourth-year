@@ -83,7 +83,6 @@ public class MainPaint extends JApplet {
         int minTV = Math.max(Math.min(v1, Math.min(v2, v3)), y1);
 //        System.out.println("MaxTV: " + maxTV + " MinTV: " + minTV);
 
-//        For debug
 //        graphics.setColor(Color.red);
 //        graphics.drawRect(minTU, minTV, maxTU - minTU, maxTV - minTV);
 
