@@ -6,6 +6,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import net.babichev.task7pro.Model;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class CarBlue extends Model {
 
     public CarBlue(Canvas canvas, DoubleProperty x, DoubleProperty y, double pY) {
@@ -14,7 +17,7 @@ public class CarBlue extends Model {
 
     @Override
     public void draw(GraphicsContext gc) {
-        Image image = new Image("file:///D:/dev/java/simple/src/net/babichev/task7pro/cars/blue.png");
+        Image image = new Image("file:" + path + "/models/cars/blue.png");
         this.drawImage(gc, image);
     }
 

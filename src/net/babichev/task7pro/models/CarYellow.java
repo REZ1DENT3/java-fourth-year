@@ -14,7 +14,7 @@ public class CarYellow extends Model {
 
     @Override
     public void draw(GraphicsContext gc) {
-        Image image = new Image("file:///D:/dev/java/simple/src/net/babichev/task7pro/cars/yellow.png");
+        Image image = new Image("file:" + path + "/models/cars/yellow.png");
         this.drawImage(gc, image);
     }
 

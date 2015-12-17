@@ -7,6 +7,9 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 interface IModel {
     public void draw(GraphicsContext gc);
     public void f(int x, int y);
@@ -22,6 +25,8 @@ public abstract class Model extends AnimationTimer implements IModel {
     protected int ind;
     protected double x0;
 
+    protected String path;
+
     public Model(Canvas canvas, DoubleProperty x, DoubleProperty y, double pY) {
         this.canvas = canvas;
         this.positionX = x;
@@ -30,6 +35,9 @@ public abstract class Model extends AnimationTimer implements IModel {
         ind = 0;
         sum = 0.;
         x0 = 0.;
+
+        Path currentRelativePath = Paths.get("");
+        path = currentRelativePath.toAbsolutePath().toString();
     }
 
     public void setDimensions(long[] dimensions) {

@@ -16,7 +16,8 @@ public class Track extends Model {
     @Override
     public void draw(GraphicsContext gc) {
         gc.setFill(Color.CORNSILK);
-        Image track = new Image("file:///D:/dev/java/simple/src/net/babichev/task7pro/track.png");
+
+        Image track = new Image("file:" + path + "/models/track.png");
         gc.drawImage(track, positionX.doubleValue(), positionY.doubleValue(), getWidth() * 5, getHeight());
 
         gc.setFill(Color.GOLD);

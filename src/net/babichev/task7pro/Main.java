@@ -91,7 +91,7 @@ public class Main extends Application {
     }
 
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws InterruptedException {
 
         stage.setTitle("Task 7");
 
