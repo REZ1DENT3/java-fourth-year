@@ -5,7 +5,6 @@ import javafx.beans.property.DoubleProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;

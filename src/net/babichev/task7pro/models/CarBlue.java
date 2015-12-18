@@ -6,9 +6,6 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import net.babichev.task7pro.Model;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 public class CarBlue extends Model {
 
     public CarBlue(Canvas canvas, DoubleProperty x, DoubleProperty y, double pY) {

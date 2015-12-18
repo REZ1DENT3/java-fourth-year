@@ -59,9 +59,9 @@ public class Main extends Application {
 
     public final long getIndex(long a, long b, long c, long d) {
         long sum = 0;
-        sum += (a < b) ? 1 : 0;
-        sum += (a < c) ? 1 : 0;
-        sum += (a < d) ? 1 : 0;
+        sum += (a > b) ? 1 : 0;
+        sum += (a > c) ? 1 : 0;
+        sum += (a > d) ? 1 : 0;
         return sum;
     }
 
@@ -118,19 +118,20 @@ public class Main extends Application {
 
         CarRoute carRouteRed = new CarRoute(new CarRed(canvas, x, y, 135.));
         carRouteRed.start();
-        while (carRouteRed.isAlive()) ;
 
         CarRoute carRouteYellow = new CarRoute(new CarYellow(canvas, x, y, 195.));
         carRouteYellow.start();
-        while (carRouteYellow.isAlive()) ;
 
         CarRoute carRouteOrange = new CarRoute(new CarOrange(canvas, x, y, 265.));
         carRouteOrange.start();
-        while (carRouteOrange.isAlive()) ;
 
         CarRoute carRouteBlue = new CarRoute(new CarBlue(canvas, x, y, 320.));
         carRouteBlue.start();
-        while (carRouteBlue.isAlive()) ;
+
+        while (carRouteRed.isAlive() ||
+                carRouteYellow.isAlive() ||
+                carRouteOrange.isAlive() ||
+                carRouteBlue.isAlive()) ;
 
         long[][] consider = considerResults(
                 carRouteRed.getDimensions(),
@@ -149,10 +150,10 @@ public class Main extends Application {
         long cor = sum(consider[2]);
         long cbr = sum(consider[3]);
 
-        long crp = Math.abs(getIndex(crr, cyr, cor, cbr) - 4);
-        long cyp = Math.abs(getIndex(cyr, crr, cor, cbr) - 4);
-        long cop = Math.abs(getIndex(cor, crr, cyr, cbr) - 4);
-        long cbp = Math.abs(getIndex(cbr, crr, cyr, cor) - 4);
+        long crp = getIndex(crr, cyr, cor, cbr) + 1;
+        long cyp = getIndex(cyr, crr, cor, cbr) + 1;
+        long cop = getIndex(cor, crr, cyr, cbr) + 1;
+        long cbp = getIndex(cbr, crr, cyr, cor) + 1;
 
         System.out.println(carRouteRed.getCar().getClass() + " take place: " + crp);
         System.out.println(carRouteYellow.getCar().getClass() + " take place: " + cyp);
@@ -167,6 +168,11 @@ public class Main extends Application {
         AnimationTimer timerCarRed = carRouteRed.getCar();
         AnimationTimer timerCarYellow = carRouteYellow.getCar();
         AnimationTimer timerCarOrange = carRouteOrange.getCar();
+
+        carRouteBlue.join();
+        carRouteRed.join();
+        carRouteYellow.join();
+        carRouteOrange.join();
 
         Group group = new Group(canvas);
         Scene scene = new Scene(group);
