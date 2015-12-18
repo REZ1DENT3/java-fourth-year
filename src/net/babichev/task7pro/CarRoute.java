@@ -20,7 +20,7 @@ public class CarRoute extends Thread {
 
     @Override
     public final void run() {
-        int n = 100;
+        int n = 85; //100;//33;
         int m = 10;
         int s = 0;
         dimensions = new long[n * m];

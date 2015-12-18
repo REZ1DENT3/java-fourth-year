@@ -5,6 +5,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import net.babichev.libs.MyMath;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -61,8 +62,10 @@ public abstract class Model extends AnimationTimer implements IModel {
             sum = sum - dimensions[ind++];
         }
         else if (sum < 0) {
-            sum++;
+            sum += 10;
         }
+
+        if (sum > 0) sum = 0;
 
         if (x0 < (-positionX.doubleValue() + sum))
             x0 = -positionX.doubleValue() + sum;
@@ -70,4 +73,7 @@ public abstract class Model extends AnimationTimer implements IModel {
         gc.drawImage(image, x0 / (5 * getWidth()) * getWidth(), pY, 60., 30.);
     }
 
+    public void f(int x, int y) {
+        for (int i = x - y; i < MyMath.randInt(y - x, x + y); ++i);
+    }
 }

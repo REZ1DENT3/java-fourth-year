@@ -12,8 +12,8 @@ import net.babichev.task7pro.models.*;
 
 /**
  * 13. реализовать программу гонки
- * с использованием потока и
- * оконного интерфейса
+ *      с использованием потока и
+ *      оконного интерфейса
  */
 
 public class Main extends Application {

@@ -4,6 +4,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import net.babichev.libs.MyMath;
 import net.babichev.task7pro.Model;
 
 public class CarRed extends Model {
@@ -18,7 +19,9 @@ public class CarRed extends Model {
         this.drawImage(gc, image);
     }
 
+    @Override
     public void f(int x, int y) {
+        super.f(x, y);
         if (y == 0) return;
         x |= y;
     }

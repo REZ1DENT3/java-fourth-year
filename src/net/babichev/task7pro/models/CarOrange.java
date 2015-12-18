@@ -18,8 +18,11 @@ public class CarOrange extends Model {
         this.drawImage(gc, image);
     }
 
+    @Override
     public void f(int x, int y) {
+        super.f(x, y);
         if (y == 0) return;
         x >>= y;
     }
+
 }

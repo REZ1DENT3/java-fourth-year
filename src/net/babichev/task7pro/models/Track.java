@@ -22,7 +22,7 @@ public class Track extends Model {
 
         gc.setFill(Color.GOLD);
         gc.fillRect(getWidth() * 5 + positionX.doubleValue() - 140
-                , getHeight() / 4, 5, getHeight() / 2);
+                , getHeight() / 4, 8, getHeight() / 2);
     }
 
     public void f(int x, int y) {}
